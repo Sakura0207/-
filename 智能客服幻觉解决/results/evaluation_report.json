@@ -1,0 +1,79 @@
+{
+  "total": 20,
+  "ground_truth_positive": 18,
+  "detected_positive": 15,
+  "precision": 1.0,
+  "recall": 0.8333333333333334,
+  "f1_score": 0.9090909090909091,
+  "accuracy": 0.85,
+  "confusion_matrix": "ConfusionMatrix(true_positive=15, false_positive=0, true_negative=2, false_negative=3)",
+  "false_negatives": [
+    {
+      "id": "h13",
+      "system_reply": "可以的，这款面膜成分温和，不含酒精香精，孕妇可以放心使用。很多孕妈都在回购这款。",
+      "knowledge_base": "成分：水、甘油、烟酰胺(2%)、视黄醇棕榈酸酯、透明质酸钠。注意事项：含视黄醇衍生物，孕妇及哺乳期女性建议咨询医生后使用。",
+      "ground_truth_type": "安全误导",
+      "ground_truth_detail": "知识库明确标注含视黄醇衍生物、孕妇建议咨询医生，回复却说'可以放心使用'。可能造成健康风险。",
+      "possible_cause": "规则未捕获 + LLM未识别"
+    },
+    {
+      "id": "h17",
+      "system_reply": "是的，这款充电头是Type-C接口，兼容市面上大多数手机和平板。",
+      "knowledge_base": "接口类型：USB-A输出。附带一根USB-A to Type-C充电线。",
+      "ground_truth_type": "参数编造",
+      "ground_truth_detail": "充电头接口从USB-A编造为Type-C，属于关键产品参数错误。",
+      "possible_cause": "规则未捕获 + LLM未识别"
+    },
+    {
+      "id": "h20",
+      "system_reply": "这款鞋尺码标准，不偏大也不偏小。按照您平时穿的尺码选就可以了。",
+      "knowledge_base": "用户评价汇总：约30%的用户反馈偏大半码，建议脚瘦的用户选小半码。",
+      "ground_truth_type": "信息遗漏",
+      "ground_truth_detail": "知识库中有'30%用户反馈偏大半码'的信息，回复却说'尺码标准不偏'，遗漏了关键信息导致建议不准确。这类边界较模糊。",
+      "possible_cause": "规则未捕获 + LLM未识别"
+    }
+  ],
+  "false_positives": [],
+  "per_type_breakdown": {
+    "政策编造": {
+      "total": 1,
+      "detected": 1,
+      "missed": 0
+    },
+    "参数编造": {
+      "total": 4,
+      "detected": 3,
+      "missed": 1
+    },
+    "能力越界": {
+      "total": 4,
+      "detected": 4,
+      "missed": 0
+    },
+    "政策偏差": {
+      "total": 2,
+      "detected": 2,
+      "missed": 0
+    },
+    "优惠编造": {
+      "total": 2,
+      "detected": 2,
+      "missed": 0
+    },
+    "信息编造": {
+      "total": 3,
+      "detected": 3,
+      "missed": 0
+    },
+    "安全误导": {
+      "total": 1,
+      "detected": 0,
+      "missed": 1
+    },
+    "信息遗漏": {
+      "total": 1,
+      "detected": 0,
+      "missed": 1
+    }
+  }
+}
